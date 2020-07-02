@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище KontragentyModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="FizicheskoyeLitsoSet">
+          <Key>
+            <PropertyRef Name="Id_face" />
+          </Key>
+          <Property Name="Id_face" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MiddleName" Type="nvarchar(max)" />
+          <Property Name="Sex" Type="nvarchar(max)" />
+          <Property Name="FirstName" Type="nvarchar(max)" />
+          <Property Name="LastName" Type="nvarchar(max)" />
+          <Property Name="Addres" Type="nvarchar(max)" />
+          <Property Name="Data" Type="nvarchar(max)" />
+          <Property Name="Id_men" Type="int" />
+        </EntityType>
+        <EntityType Name="MenedzherSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar(max)" />
+          <Property Name="MiddleName" Type="nvarchar(max)" />
+          <Property Name="LastName" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="YuridicheskoyeLitsoSet">
+          <Key>
+            <PropertyRef Name="Id_face" />
+          </Key>
+          <Property Name="Id_face" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SokrashchennoyeNaimenovaniye" Type="nvarchar(max)" />
+          <Property Name="Addres" Type="nvarchar(max)" />
+          <Property Name="INN" Type="nvarchar(max)" />
+          <Property Name="KPP" Type="nvarchar(max)" />
+          <Property Name="Id_men" Type="int" />
+        </EntityType>
+        <Association Name="FK_FizicheskoyeLitsoSet_MenedzherSet">
+          <End Role="MenedzherSet" Type="Self.MenedzherSet" Multiplicity="0..1" />
+          <End Role="FizicheskoyeLitsoSet" Type="Self.FizicheskoyeLitsoSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MenedzherSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FizicheskoyeLitsoSet">
+              <PropertyRef Name="Id_men" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_YuridicheskoyeLitsoSet_MenedzherSet">
+          <End Role="MenedzherSet" Type="Self.MenedzherSet" Multiplicity="0..1" />
+          <End Role="YuridicheskoyeLitsoSet" Type="Self.YuridicheskoyeLitsoSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MenedzherSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="YuridicheskoyeLitsoSet">
+              <PropertyRef Name="Id_men" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище KontragentyModelContainer">
+          <EntitySet Name="FizicheskoyeLitsoSet" EntityType="Self.FizicheskoyeLitsoSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MenedzherSet" EntityType="Self.MenedzherSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="YuridicheskoyeLitsoSet" EntityType="Self.YuridicheskoyeLitsoSet" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_FizicheskoyeLitsoSet_MenedzherSet" Association="Self.FK_FizicheskoyeLitsoSet_MenedzherSet">
+            <End Role="MenedzherSet" EntitySet="MenedzherSet" />
+            <End Role="FizicheskoyeLitsoSet" EntitySet="FizicheskoyeLitsoSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_YuridicheskoyeLitsoSet_MenedzherSet" Association="Self.FK_YuridicheskoyeLitsoSet_MenedzherSet">
+            <End Role="MenedzherSet" EntitySet="MenedzherSet" />
+            <End Role="YuridicheskoyeLitsoSet" EntitySet="YuridicheskoyeLitsoSet" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="KontragentyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="FizicheskoyeLitsoSet">
+          <Key>
+            <PropertyRef Name="Id_face" />
+          </Key>
+          <Property Name="Id_face" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MiddleName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Sex" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Addres" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Data" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Id_men" Type="Int32" />
+          <NavigationProperty Name="MenedzherSet" Relationship="Self.FK_FizicheskoyeLitsoSet_MenedzherSet" FromRole="FizicheskoyeLitsoSet" ToRole="MenedzherSet" />
+        </EntityType>
+        <EntityType Name="MenedzherSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="FizicheskoyeLitsoSet" Relationship="Self.FK_FizicheskoyeLitsoSet_MenedzherSet" FromRole="MenedzherSet" ToRole="FizicheskoyeLitsoSet" />
+          <NavigationProperty Name="YuridicheskoyeLitsoSet" Relationship="Self.FK_YuridicheskoyeLitsoSet_MenedzherSet" FromRole="MenedzherSet" ToRole="YuridicheskoyeLitsoSet" />
+        </EntityType>
+        <EntityType Name="YuridicheskoyeLitsoSet">
+          <Key>
+            <PropertyRef Name="Id_face" />
+          </Key>
+          <Property Name="Id_face" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SokrashchennoyeNaimenovaniye" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Addres" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="INN" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="KPP" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Id_men" Type="Int32" />
+          <NavigationProperty Name="MenedzherSet" Relationship="Self.FK_YuridicheskoyeLitsoSet_MenedzherSet" FromRole="YuridicheskoyeLitsoSet" ToRole="MenedzherSet" />
+        </EntityType>
+        <Association Name="FK_FizicheskoyeLitsoSet_MenedzherSet">
+          <End Role="MenedzherSet" Type="Self.MenedzherSet" Multiplicity="0..1" />
+          <End Role="FizicheskoyeLitsoSet" Type="Self.FizicheskoyeLitsoSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MenedzherSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FizicheskoyeLitsoSet">
+              <PropertyRef Name="Id_men" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_YuridicheskoyeLitsoSet_MenedzherSet">
+          <End Role="MenedzherSet" Type="Self.MenedzherSet" Multiplicity="0..1" />
+          <End Role="YuridicheskoyeLitsoSet" Type="Self.YuridicheskoyeLitsoSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MenedzherSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="YuridicheskoyeLitsoSet">
+              <PropertyRef Name="Id_men" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="KontragentyEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="FizicheskoyeLitsoSet" EntityType="Self.FizicheskoyeLitsoSet" />
+          <EntitySet Name="MenedzherSet" EntityType="Self.MenedzherSet" />
+          <EntitySet Name="YuridicheskoyeLitsoSet" EntityType="Self.YuridicheskoyeLitsoSet" />
+          <AssociationSet Name="FK_FizicheskoyeLitsoSet_MenedzherSet" Association="Self.FK_FizicheskoyeLitsoSet_MenedzherSet">
+            <End Role="MenedzherSet" EntitySet="MenedzherSet" />
+            <End Role="FizicheskoyeLitsoSet" EntitySet="FizicheskoyeLitsoSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_YuridicheskoyeLitsoSet_MenedzherSet" Association="Self.FK_YuridicheskoyeLitsoSet_MenedzherSet">
+            <End Role="MenedzherSet" EntitySet="MenedzherSet" />
+            <End Role="YuridicheskoyeLitsoSet" EntitySet="YuridicheskoyeLitsoSet" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище KontragentyModelContainer" CdmEntityContainer="KontragentyEntities">
+          <EntitySetMapping Name="FizicheskoyeLitsoSet">
+            <EntityTypeMapping TypeName="KontragentyModel.FizicheskoyeLitsoSet">
+              <MappingFragment StoreEntitySet="FizicheskoyeLitsoSet">
+                <ScalarProperty Name="Id_face" ColumnName="Id_face" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Addres" ColumnName="Addres" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="Id_men" ColumnName="Id_men" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MenedzherSet">
+            <EntityTypeMapping TypeName="KontragentyModel.MenedzherSet">
+              <MappingFragment StoreEntitySet="MenedzherSet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="YuridicheskoyeLitsoSet">
+            <EntityTypeMapping TypeName="KontragentyModel.YuridicheskoyeLitsoSet">
+              <MappingFragment StoreEntitySet="YuridicheskoyeLitsoSet">
+                <ScalarProperty Name="Id_face" ColumnName="Id_face" />
+                <ScalarProperty Name="SokrashchennoyeNaimenovaniye" ColumnName="SokrashchennoyeNaimenovaniye" />
+                <ScalarProperty Name="Addres" ColumnName="Addres" />
+                <ScalarProperty Name="INN" ColumnName="INN" />
+                <ScalarProperty Name="KPP" ColumnName="KPP" />
+                <ScalarProperty Name="Id_men" ColumnName="Id_men" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

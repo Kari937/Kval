@@ -10,11 +10,34 @@ using System.Windows.Forms;
 
 namespace Kval
 {
-    public partial class Form1 : Form
+    public partial class Menu : System.Windows.Forms.Form
     {
-        public Form1()
+        public Menu()
         {
             InitializeComponent();
+        }
+
+        private void buttonMenedzher_Click(object sender, EventArgs e)
+        {
+            FormMenedzher formMenedzher = new FormMenedzher();
+            formMenedzher.Show();
+        }
+
+        private void Menu_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonFizicheskiyeLitsa_Click(object sender, EventArgs e)
+        {
+            FormFizicheskoyeLitso formFizicheskoyeLitso = new FormFizicheskoyeLitso();
+            formFizicheskoyeLitso.Show();
+        }
+
+        private void buttonYuridicheskiyeLitsa_Click(object sender, EventArgs e)
+        {
+            FormYuridicheskoyeLitso formYuridicheskoyeLitso = new FormYuridicheskoyeLitso();
+            formYuridicheskoyeLitso.Show();
         }
     }
 }
