@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29503.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kval", "Kval\Kval.csproj", "{F370F7B8-8048-481B-B306-49F462D7BA81}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F370F7B8-8048-481B-B306-49F462D7BA81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F370F7B8-8048-481B-B306-49F462D7BA81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F370F7B8-8048-481B-B306-49F462D7BA81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F370F7B8-8048-481B-B306-49F462D7BA81}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E7AE96F2-D58D-482A-8F82-C63D5398523B}
+	EndGlobalSection
+EndGlobal
